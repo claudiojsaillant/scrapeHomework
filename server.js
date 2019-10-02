@@ -31,11 +31,10 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 mongoose.connect(MONGODB_URI);
 
 
-const apiRoutes = require("./routes/apiRoutes.js");
-const htmlRoutes = require("./routes/htmlRoutes.js");
+const apiRoutes = require("./routes/apiRoutes.js")(app);
+const htmlRoutes = require("./routes/htmlRoutes.js")(app);
 
-app.use(apiRoutes);
-app.use(htmlRoutes);
+
 
 
 // Start the server
