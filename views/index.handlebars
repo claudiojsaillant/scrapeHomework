@@ -39,13 +39,14 @@
     <h2><i></i></h2>
     <div id="articles">
       {{#each article}}
-      <div class='jumbotron jumbotron-fluid'>
+      <div class='jumbotron jumbotron-fluid new'>
         <div class='container'>
-          <h2>
-            <p data-id={{this._id}}>{{this.title}}
-              <a href={{this.link}}>more</a>
+          <h5>
+            <p class="cTitle" data-id={{this._id}}>{{this.title}}
+              
             </p>
-          </h2>
+            <p>{{this.content}}<a href={{this.link}}>more</a></p>
+          </h5>
         </div>
       </div>
       {{/each}}

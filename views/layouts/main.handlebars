@@ -15,7 +15,8 @@
 			width: 960px;
 			margin-left: auto;
 			margin-right: auto;
-			padding-top: 5%;
+			padding: 0px;
+			
 		}
 
 		#articles {
@@ -67,6 +68,21 @@
 		#wrapper h1 {
 			margin: 10px;
 		}
+
+		.comment {
+			padding: 15px;
+			border: 2px solid #1C6EA4;
+			border-radius: 15px;
+			margin-bottom: 6px;
+		}
+
+		.new{
+			padding: 15px;
+		}
+
+		.cTitle {
+			font-size: 25px;
+		}
 	</style>
 </head>
 
@@ -78,8 +94,8 @@
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
 	<script>
-		console.log("hello");
-		$(document).on("click", "p", function () {
+		
+		$(document).on("click", ".cTitle", function () {
 			// Empty the notes from the note section
 			$("#notes").empty();
 			// Save the id from the p tag
@@ -110,10 +126,24 @@
 
 					// If there's a note in the article
 					if (data.note) {
-						// Place the title of the note in the title input
-						$("#titleinput").val(data.note.title);
-						// Place the body of the note in the body textarea
-						$("#bodyinput").val(data.note.body);
+						$("#notes").append("<div class='comments'></div>");
+						data.note.forEach(function (comment) {
+							let div = $("<div>");
+							div.attr("class", 'comment');
+							let title = $('<h3>');
+							let content = $('<p>');
+							content.text(comment.body)
+							title.text(comment.title);
+
+							div.append(title);
+							div.append(content);
+							$('.comments').prepend(div);
+
+
+
+						})
+
+
 					}
 				});
 		});

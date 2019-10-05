@@ -1,5 +1,5 @@
-console.log("linked");
-$(document).on("click", "p", function() {
+console.log("WUT");
+$(document).on("click", ".cTitle", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
